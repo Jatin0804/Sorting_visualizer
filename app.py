@@ -1,7 +1,9 @@
 import time
 import random
-from tkinter import Tk, Canvas, Button, Scale, HORIZONTAL, StringVar, OptionMenu
+import tkinter as tk
+from tkinter import Canvas, Button, Scale, HORIZONTAL, StringVar, OptionMenu, Label, Frame
 
+# Default Configuration
 DEFAULT_CONFIG = {
     "INITIAL_ELEMENTS": 50,
     "INITIAL_SPEED": 100,
@@ -12,7 +14,9 @@ COLORS = {
     "SUCCESS": "#2ecc71",
     "DISABLED": "#95a5a6",
     "ACTIVE": "#e74c3c",
-    "BAR": "#2980b9"
+    "BAR": "#2980b9",
+    "BACKGROUND": "#f5f5f5",
+    "TEXT": "#333"
 }
 
 def sleep(duration):
@@ -30,8 +34,19 @@ def calculate_bar_height(value, is_mobile, canvas_height):
 class SortingVisualizer:
     def __init__(self, root):
         self.root = root
-        self.canvas = Canvas(root, width=800, height=400, bg="white")
+        self.root.configure(bg=COLORS["BACKGROUND"])
+        
+        # Main Frame for Layout
+        self.main_frame = Frame(root, bg=COLORS["BACKGROUND"])
+        self.main_frame.pack(pady=10)
+        
+        # Canvas
+        self.canvas = Canvas(self.main_frame, width=900, height=400, bg="white")
         self.canvas.pack()
+        
+        # Control Panel
+        self.control_frame = Frame(self.main_frame, bg=COLORS["BACKGROUND"])
+        self.control_frame.pack(pady=10)
         
         self.number_of_elements = DEFAULT_CONFIG["INITIAL_ELEMENTS"]
         self.speed = DEFAULT_CONFIG["INITIAL_SPEED"]
@@ -41,20 +56,23 @@ class SortingVisualizer:
         self.selected_algorithm = StringVar(root)
         self.selected_algorithm.set("Bubble Sort")
         
-        self.generate_btn = Button(root, text="Generate", command=self.create_dataset, bg=COLORS["PRIMARY"])
-        self.generate_btn.pack()
+        # Buttons and Controls
+        self.generate_btn = Button(self.control_frame, text="Generate", command=self.create_dataset, bg=COLORS["PRIMARY"], fg="white", font=("Arial", 12, "bold"))
+        self.generate_btn.grid(row=0, column=0, padx=5)
         
-        self.size_slider = Scale(root, from_=10, to=100, orient=HORIZONTAL, command=self.update_size)
-        self.size_slider.pack()
+        self.size_slider = Scale(self.control_frame, from_=10, to=100, orient=HORIZONTAL, command=self.update_size, bg=COLORS["BACKGROUND"], highlightthickness=0)
+        self.size_slider.set(self.number_of_elements)
+        self.size_slider.grid(row=0, column=1, padx=5)
         
-        self.speed_slider = Scale(root, from_=10, to=500, orient=HORIZONTAL, command=self.update_speed)
-        self.speed_slider.pack()
+        self.speed_slider = Scale(self.control_frame, from_=10, to=500, orient=HORIZONTAL, command=self.update_speed, bg=COLORS["BACKGROUND"], highlightthickness=0)
+        self.speed_slider.set(self.speed)
+        self.speed_slider.grid(row=0, column=2, padx=5)
         
-        self.sort_menu = OptionMenu(root, self.selected_algorithm, *self.sorting_algorithms.keys())
-        self.sort_menu.pack()
+        self.sort_menu = OptionMenu(self.control_frame, self.selected_algorithm, *self.sorting_algorithms.keys())
+        self.sort_menu.grid(row=0, column=3, padx=5)
         
-        self.sort_btn = Button(root, text="Sort", command=self.start_sorting, bg=COLORS["SUCCESS"])
-        self.sort_btn.pack()
+        self.sort_btn = Button(self.control_frame, text="Sort", command=self.start_sorting, bg=COLORS["SUCCESS"], fg="white", font=("Arial", 12, "bold"))
+        self.sort_btn.grid(row=0, column=4, padx=5)
         
         self.create_dataset()
     
@@ -118,7 +136,7 @@ class SortingVisualizer:
         self.sort_btn.config(state="normal", bg=COLORS["SUCCESS"])
 
 def main():
-    root = Tk()
+    root = tk.Tk()
     root.title("Sorting Visualizer")
     app = SortingVisualizer(root)
     root.mainloop()
