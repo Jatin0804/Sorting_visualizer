@@ -1,4 +1,7 @@
-from PyQt6.QtWidgets import QApplication, QLabel, QWidget, QVBoxLayout, QPushButton, QSlider, QComboBox, QGraphicsView, QGraphicsScene
+from PyQt6.QtWidgets import (QApplication, QLabel, QWidget, 
+                             QVBoxLayout, QPushButton, QSlider, 
+                             QComboBox, QGraphicsView, 
+                             QGraphicsScene)
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QColor, QBrush, QPen
 import random
@@ -14,6 +17,7 @@ class SortingVisualizer(QWidget):
         self.data = []
         self.sorting_thread = None
         self.dataset_size = 50
+        self.bar_colors = []
 
         # Layout
         layout = QVBoxLayout()
@@ -36,7 +40,10 @@ class SortingVisualizer(QWidget):
 
         # Sorting Algorithm Selector
         self.algorithm_selector = QComboBox()
-        self.algorithm_selector.addItems(["Bubble Sort", "Selection Sort"])
+        self.algorithm_selector.addItems([
+            "Bubble Sort", 
+            "Selection Sort"
+        ])
         layout.addWidget(self.algorithm_selector)
 
         # Speed Slider
@@ -50,9 +57,9 @@ class SortingVisualizer(QWidget):
 
         # Size Slider
         self.size_slider = QSlider(Qt.Orientation.Horizontal, self)
-        self.size_slider.setMinimum(10)  # Minimum dataset size
-        self.size_slider.setMaximum(100)  # Maximum dataset size
-        self.size_slider.setValue(50)  # Default value
+        self.size_slider.setMinimum(10)  
+        self.size_slider.setMaximum(150)  
+        self.size_slider.setValue(50)  
         self.size_slider.valueChanged.connect(self.update_dataset_size)
 
         layout.addWidget(QLabel("Dataset Size:"))
@@ -64,8 +71,7 @@ class SortingVisualizer(QWidget):
     def update_dataset_size(self):
         """ Updates dataset size when slider is changed """
         self.dataset_size = self.size_slider.value()
-        self.data = [random.randint(10, 100) for _ in range(self.dataset_size)]
-        self.draw_data()
+        self.create_dataset()
 
 
     def create_dataset(self):
@@ -74,6 +80,7 @@ class SortingVisualizer(QWidget):
         then calls the `draw_data` method.
         """
         self.data = [random.randint(10, 100) for _ in range(self.dataset_size)]
+        self.bar_colors = ["#2980b9"] * len(self.data)
         self.draw_data()
 
     def draw_data(self):
@@ -88,7 +95,9 @@ class SortingVisualizer(QWidget):
         for i, value in enumerate(self.data):
             x = i * bar_width
             y = height - (value / 100) * height
-            rect = self.scene.addRect(x, y, bar_width - 2, height - y, QPen(QColor("black")), QBrush(QColor("#2980b9")))
+            color = self.bar_colors[i]
+            
+            self.scene.addRect(x, y, bar_width - 2, height - y, QPen(QColor("black")), QBrush(QColor(color)))
 
         self.update()
 

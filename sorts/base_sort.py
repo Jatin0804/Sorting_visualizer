@@ -29,12 +29,30 @@ class BaseSort(QThread):
         """ Stops sorting """
         self.running = False
 
-    def draw(self):
-        """ Updates UI """
-        # `self.update_signal.emit()` is emitting the custom signal `update_signal`. When this line is
-        # executed, it notifies any connected slots (functions) that are listening for this signal
-        # that an update event has occurred. This allows other parts of the program to respond to the
-        # update event, such as updating the user interface (UI) to reflect changes in the data or
-        # state of the program.
+    # def draw(self):
+    #     """ Updates UI """
+    #     # `self.update_signal.emit()` is emitting the custom signal `update_signal`. When this line is
+    #     # executed, it notifies any connected slots (functions) that are listening for this signal
+    #     # that an update event has occurred. This allows other parts of the program to respond to the
+    #     # update event, such as updating the user interface (UI) to reflect changes in the data or
+    #     # state of the program.
+    #     self.update_signal.emit()
+    #     sleep(self.get_speed())
+
+    def highlight_bars(self, indices, color='#e74c3c'):
+        """Highlights the given bars with a specific color."""
+
+        for i in indices:
+            self.visualizer.bar_colors[i] = color
+
+        self.update_signal.emit()
+        sleep(self.get_speed())
+
+    def reset_bars(self, indices):
+        """Resets the bars to their original color."""
+
+        for i in indices:
+            self.visualizer.bar_colors[i] = "#2980b9"
+        
         self.update_signal.emit()
         sleep(self.get_speed())
