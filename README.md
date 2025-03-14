@@ -1,2 +1,2 @@
-# Sorting_virtualizer
+# Sorting_visualizer
 This project focuses on Virtualizing various sorting algorithms.
