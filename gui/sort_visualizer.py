@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QSlider, QComboBox, QGraphicsView, QGraphicsScene
+from PyQt6.QtWidgets import QApplication, QLabel, QWidget, QVBoxLayout, QPushButton, QSlider, QComboBox, QGraphicsView, QGraphicsScene
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QColor, QBrush, QPen
 import random
@@ -13,6 +13,7 @@ class SortingVisualizer(QWidget):
 
         self.data = []
         self.sorting_thread = None
+        self.dataset_size = 50
 
         # Layout
         layout = QVBoxLayout()
@@ -43,18 +44,42 @@ class SortingVisualizer(QWidget):
         self.speed_slider.setMinimum(10)
         self.speed_slider.setMaximum(500)
         self.speed_slider.setValue(100)
+
+        layout.addWidget(QLabel("Sorting Speed:"))
         layout.addWidget(self.speed_slider)
+
+        # Size Slider
+        self.size_slider = QSlider(Qt.Orientation.Horizontal, self)
+        self.size_slider.setMinimum(10)  # Minimum dataset size
+        self.size_slider.setMaximum(100)  # Maximum dataset size
+        self.size_slider.setValue(50)  # Default value
+        self.size_slider.valueChanged.connect(self.update_dataset_size)
+
+        layout.addWidget(QLabel("Dataset Size:"))
+        layout.addWidget(self.size_slider)
 
         self.setLayout(layout)
         self.create_dataset()
 
+    def update_dataset_size(self):
+        """ Updates dataset size when slider is changed """
+        self.dataset_size = self.size_slider.value()
+        self.data = [random.randint(10, 100) for _ in range(self.dataset_size)]
+        self.draw_data()
+
+
     def create_dataset(self):
-        """ Generates random dataset """
-        self.data = [random.randint(10, 100) for _ in range(50)]
+        """
+        The function `create_dataset` generates a random dataset of 50 integers between 10 and 100 and
+        then calls the `draw_data` method.
+        """
+        self.data = [random.randint(10, 100) for _ in range(self.dataset_size)]
         self.draw_data()
 
     def draw_data(self):
-        """ Draws the bars on the screen """
+        """
+        The `draw_data` function draws bars representing data values on the screen using PyQt.
+        """
         self.scene.clear()
         width = self.view.width()
         height = self.view.height()

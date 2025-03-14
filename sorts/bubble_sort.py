@@ -1,5 +1,6 @@
 from .base_sort import BaseSort
 
+# The BubbleSort class implements the bubble sort algorithm to sort a list of data.
 class BubbleSort(BaseSort):
     def run(self):
         for i in range(len(self.data) - 1):
