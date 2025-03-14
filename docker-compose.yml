@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  sorting-visualizer:
+    build: .
+    container_name: sorting-visualizer  
+    # command: ["python", "app.py"]
+    environment:
+      - DISPLAY=${DISPLAY}  # Enables GUI forwarding (for Linux)
+    network_mode: "host"  # Allows GUI applications to run
+    stdin_open: true
+    tty: true
