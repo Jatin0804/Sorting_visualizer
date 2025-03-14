@@ -40,7 +40,7 @@ class SelectionSort(BaseSort):
                 self.reset_bars([i, j]) # Reset the bars to their original color
 
             self.data[i], self.data[min_idx] = self.data[min_idx], self.data[i]
-            self.update_signal.emit()
+            self.draw()
 
         self.visualizer.bar_colors = ["#2980b9"] * len(self.data)
-        self.update_signal.emit()
+        self.draw()

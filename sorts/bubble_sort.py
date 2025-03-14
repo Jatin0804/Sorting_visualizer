@@ -24,9 +24,9 @@ class BubbleSort(BaseSort):
 
                 if self.data[j] > self.data[j + 1]:
                     self.data[j], self.data[j + 1] = self.data[j + 1], self.data[j]
-                    self.update_signal.emit()
+                    self.draw()
 
                 self.reset_bars([j, j + 1]) # Reset the bars to their original color
 
         self.visualizer.bar_colors = ["#2980b9"] * len(self.data)
-        self.update_signal.emit()
+        self.draw()

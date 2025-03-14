@@ -7,6 +7,7 @@ from PyQt6.QtGui import QColor, QBrush, QPen
 import random
 from sorts.bubble_sort import BubbleSort
 from sorts.selection_sort import SelectionSort
+from sorts.insertion_sort import InsertionSort
 
 class SortingVisualizer(QWidget):
     def __init__(self):
@@ -42,7 +43,8 @@ class SortingVisualizer(QWidget):
         self.algorithm_selector = QComboBox()
         self.algorithm_selector.addItems([
             "Bubble Sort", 
-            "Selection Sort"
+            "Selection Sort",
+            "Insertion Sort"
         ])
         layout.addWidget(self.algorithm_selector)
 
@@ -110,6 +112,8 @@ class SortingVisualizer(QWidget):
             self.sorting_thread = BubbleSort(self.data, self)
         elif algorithm == "Selection Sort":
             self.sorting_thread = SelectionSort(self.data, self)
+        elif algorithm == "Insertion Sort":
+            self.sorting_thread = InsertionSort(self.data, self)
 
         self.sorting_thread.update_signal.connect(self.draw_data)
         self.sorting_thread.start()
