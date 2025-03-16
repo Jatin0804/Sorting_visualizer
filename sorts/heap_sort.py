@@ -1,3 +1,11 @@
+'''
+Heap Sort is a comparison-based sorting algorithm that builds a binary heap and 
+repeatedly extracts the maximum element, placing it at the correct position in the sorted array.
+'''
+# Worst case time complexity: O(n log n)
+# Best case time complexity: O(n log n)
+
+
 from .base_sort import BaseSort
 
 class HeapSort(BaseSort):

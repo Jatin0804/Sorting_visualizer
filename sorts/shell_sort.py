@@ -1,3 +1,10 @@
+'''
+Shell Sort is an improved version of Insertion Sort, where elements are first sorted at large gaps and 
+then progressively reduced until they are sorted at gap = 1.
+'''
+# Worst case time complexity: O(n^2)
+# Best case time complexity: O(n log n)
+
 from .base_sort import BaseSort
 
 class ShellSort(BaseSort):

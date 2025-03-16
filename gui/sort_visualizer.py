@@ -16,6 +16,7 @@ from sorts.shell_sort import ShellSort
 from sorts.merge_sort import MergeSort
 from sorts.heap_sort import HeapSort
 from sorts.tim_sort import TimSort
+from sorts.comb_Sort import CombSort
 
 class SortingVisualizer(QWidget):
     def __init__(self):
@@ -51,6 +52,7 @@ class SortingVisualizer(QWidget):
         self.algorithm_selector = QComboBox()
         self.algorithm_selector.addItems([
             "Bubble Sort",
+            "Comb Sort",
             "Counting Sort",
             "Heap Sort",
             "Insertion Sort",
@@ -143,6 +145,8 @@ class SortingVisualizer(QWidget):
             self.sorting_thread = HeapSort(self.data, self)
         elif algorithm == "Tim Sort":
             self.sorting_thread = TimSort(self.data, self)
+        elif algorithm == "Comb Sort":
+            self.sorting_thread = CombSort(self.data, self)
 
         self.sorting_thread.update_signal.connect(self.draw_data)
         self.sorting_thread.start()
@@ -161,3 +165,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

@@ -1,3 +1,10 @@
+'''
+Insertion Sort is a simple and efficient algorithm for small datasets. 
+It works similarly to sorting playing cards by picking one card at a time and inserting it into its correct position.
+'''
+# Worst-case performance: O(n^2)
+# Best-case performance: O(n)
+
 from .base_sort import BaseSort
 
 class InsertionSort(BaseSort):
