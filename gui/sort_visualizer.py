@@ -8,6 +8,7 @@ import random
 from sorts.bubble_sort import BubbleSort
 from sorts.selection_sort import SelectionSort
 from sorts.insertion_sort import InsertionSort
+from sorts.radix_sort import RadixSort
 
 class SortingVisualizer(QWidget):
     def __init__(self):
@@ -44,7 +45,8 @@ class SortingVisualizer(QWidget):
         self.algorithm_selector.addItems([
             "Bubble Sort", 
             "Selection Sort",
-            "Insertion Sort"
+            "Insertion Sort",
+            "Radix Sort"
         ])
         layout.addWidget(self.algorithm_selector)
 
@@ -114,6 +116,8 @@ class SortingVisualizer(QWidget):
             self.sorting_thread = SelectionSort(self.data, self)
         elif algorithm == "Insertion Sort":
             self.sorting_thread = InsertionSort(self.data, self)
+        elif algorithm == "Radix Sort":
+            self.sorting_thread = RadixSort(self.data, self)
 
         self.sorting_thread.update_signal.connect(self.draw_data)
         self.sorting_thread.start()
