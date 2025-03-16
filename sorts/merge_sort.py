@@ -1,3 +1,10 @@
+'''
+Merge Sort is a stable sorting algorithm that follows the divide-and-conquer approach. 
+It recursively divides the array into smaller subarrays, sorts them, and merges them back together in sorted order.
+'''
+# Worst case time complexity: O(n log n)
+# Best case time complexity: O(n log n)
+
 from .base_sort import BaseSort
 
 class MergeSort(BaseSort):

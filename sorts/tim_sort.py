@@ -1,3 +1,9 @@
+'''
+Tim Sort is a hybrid sorting algorithm that combines Merge Sort and Insertion Sort to optimize real-world sorting performance. It is used in Python’s built-in sorting functions.
+'''
+# Worst case time complexity: O(n log n)
+# Best case time complexity: O(n)
+
 from .base_sort import BaseSort
 
 class TimSort(BaseSort):

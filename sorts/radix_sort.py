@@ -1,3 +1,10 @@
+'''
+Radix Sort is a non-comparative sorting algorithm that sorts numbers digit by digit, 
+starting from the least significant to the most significant digit, using Counting Sort as a subroutine.
+'''
+# Worst case time complexity: O(n * k)
+# Best case time complexity: O(n * k)
+
 from .base_sort import BaseSort
 
 class RadixSort(BaseSort):

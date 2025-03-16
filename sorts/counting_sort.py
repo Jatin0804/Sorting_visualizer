@@ -1,3 +1,9 @@
+'''
+Counting Sort is a non-comparative sorting algorithm that counts the occurrence of each element and places them in their correct positions.
+'''
+# Worst case time complexity: O(n + k)
+# Best case time complexity: O(n + k)
+
 from .base_sort import BaseSort
 
 class CountingSort(BaseSort):

@@ -1,3 +1,10 @@
+'''
+Quick Sort is a divide-and-conquer algorithm that selects a pivot element, 
+partitions the array around the pivot, and recursively sorts the left and right partitions.
+'''
+# Worst case time complexity: O(n^2)
+# Best case time complexity: O(n log n)
+
 from .base_sort import BaseSort
 
 class QuickSort(BaseSort):
