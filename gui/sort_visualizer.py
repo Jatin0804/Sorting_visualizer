@@ -15,6 +15,7 @@ from sorts.quick_sort import QuickSort
 from sorts.shell_sort import ShellSort
 from sorts.merge_sort import MergeSort
 from sorts.heap_sort import HeapSort
+from sorts.tim_sort import TimSort
 
 class SortingVisualizer(QWidget):
     def __init__(self):
@@ -57,7 +58,8 @@ class SortingVisualizer(QWidget):
             "Quick Sort",
             "Radix Sort",
             "Selection Sort",
-            "Shell Sort"
+            "Shell Sort",
+            "Tim Sort"
         ])
         layout.addWidget(self.algorithm_selector)
 
@@ -139,6 +141,8 @@ class SortingVisualizer(QWidget):
             self.sorting_thread = MergeSort(self.data, self)
         elif algorithm == "Heap Sort":
             self.sorting_thread = HeapSort(self.data, self)
+        elif algorithm == "Tim Sort":
+            self.sorting_thread = TimSort(self.data, self)
 
         self.sorting_thread.update_signal.connect(self.draw_data)
         self.sorting_thread.start()
