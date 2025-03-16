@@ -16,7 +16,7 @@ Sorting Visualizer is a graphical application built using **PyQt6** that demonst
 ### Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Jatin0804/sorting-visualizer.git
+   git clone https://github.com/Jatin0804/Sorting_visualizer.git
    cd sorting-visualizer
    ```
 2. Install dependencies:
