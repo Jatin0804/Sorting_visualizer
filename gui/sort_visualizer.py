@@ -17,6 +17,7 @@ from sorts.merge_sort import MergeSort
 from sorts.heap_sort import HeapSort
 from sorts.tim_sort import TimSort
 from sorts.comb_Sort import CombSort
+from sorts.bogo_sort import BogoSort
 
 class SortingVisualizer(QWidget):
     def __init__(self):
@@ -51,6 +52,7 @@ class SortingVisualizer(QWidget):
         # Sorting Algorithm Selector
         self.algorithm_selector = QComboBox()
         self.algorithm_selector.addItems([
+            "Bogo Sort (Fun only)",
             "Bubble Sort",
             "Comb Sort",
             "Counting Sort",
@@ -147,6 +149,8 @@ class SortingVisualizer(QWidget):
             self.sorting_thread = TimSort(self.data, self)
         elif algorithm == "Comb Sort":
             self.sorting_thread = CombSort(self.data, self)
+        elif algorithm == "Bogo Sort (Fun only)":
+            self.sorting_thread = BogoSort(self.data, self)
 
         self.sorting_thread.update_signal.connect(self.draw_data)
         self.sorting_thread.start()
