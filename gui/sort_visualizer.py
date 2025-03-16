@@ -5,10 +5,16 @@ from PyQt6.QtWidgets import (QApplication, QLabel, QWidget,
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QColor, QBrush, QPen
 import random
+
 from sorts.bubble_sort import BubbleSort
 from sorts.selection_sort import SelectionSort
 from sorts.insertion_sort import InsertionSort
 from sorts.radix_sort import RadixSort
+from sorts.counting_sort import CountingSort
+from sorts.quick_sort import QuickSort
+from sorts.shell_sort import ShellSort
+from sorts.merge_sort import MergeSort
+from sorts.heap_sort import HeapSort
 
 class SortingVisualizer(QWidget):
     def __init__(self):
@@ -43,10 +49,15 @@ class SortingVisualizer(QWidget):
         # Sorting Algorithm Selector
         self.algorithm_selector = QComboBox()
         self.algorithm_selector.addItems([
-            "Bubble Sort", 
-            "Selection Sort",
+            "Bubble Sort",
+            "Counting Sort",
+            "Heap Sort",
             "Insertion Sort",
-            "Radix Sort"
+            "Merge Sort",
+            "Quick Sort",
+            "Radix Sort",
+            "Selection Sort",
+            "Shell Sort"
         ])
         layout.addWidget(self.algorithm_selector)
 
@@ -112,12 +123,22 @@ class SortingVisualizer(QWidget):
 
         if algorithm == "Bubble Sort":
             self.sorting_thread = BubbleSort(self.data, self)
+        elif algorithm == "Counting Sort":
+            self.sorting_thread = CountingSort(self.data, self)
         elif algorithm == "Selection Sort":
             self.sorting_thread = SelectionSort(self.data, self)
         elif algorithm == "Insertion Sort":
             self.sorting_thread = InsertionSort(self.data, self)
         elif algorithm == "Radix Sort":
             self.sorting_thread = RadixSort(self.data, self)
+        elif algorithm == "Quick Sort":
+            self.sorting_thread = QuickSort(self.data, self)
+        elif algorithm == "Shell Sort":
+            self.sorting_thread = ShellSort(self.data, self)
+        elif algorithm == "Merge Sort":
+            self.sorting_thread = MergeSort(self.data, self)
+        elif algorithm == "Heap Sort":
+            self.sorting_thread = HeapSort(self.data, self)
 
         self.sorting_thread.update_signal.connect(self.draw_data)
         self.sorting_thread.start()
