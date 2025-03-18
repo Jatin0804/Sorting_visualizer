@@ -8,6 +8,11 @@ partitions the array around the pivot, and recursively sorts the left and right 
 from .base_sort import BaseSort
 
 class QuickSort(BaseSort):
+    complexities = {
+        "worst": "O(n²)",
+        "average": "O(n log n)",
+        "best": "O(n log n)"
+    }
     def run(self):
         self.quick_sort(0, len(self.data) - 1)
         self.visualizer.bar_colors = ["#2980b9"] * len(self.data)  # Final sorted color

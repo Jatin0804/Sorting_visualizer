@@ -2,6 +2,12 @@ from .base_sort import BaseSort
 import random
 
 class BogoSort(BaseSort):
+    complexities = {
+        "worst": "O(∞)",
+        "average": "O((n+1)!)",
+        "best": "O(n)"
+    }
+
     def run(self):
         while not self.is_sorted():
             if not self.running:

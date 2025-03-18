@@ -9,6 +9,11 @@ repeatedly extracts the maximum element, placing it at the correct position in t
 from .base_sort import BaseSort
 
 class HeapSort(BaseSort):
+    complexities = {
+        "worst": "O(n log n)",
+        "average": "O(n log n)",
+        "best": "O(n log n)"
+    }
     def run(self):
         n = len(self.data)
 

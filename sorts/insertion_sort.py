@@ -8,6 +8,11 @@ It works similarly to sorting playing cards by picking one card at a time and in
 from .base_sort import BaseSort
 
 class InsertionSort(BaseSort):
+    complexities = {
+        "worst": "O(n²)",
+        "average": "O(n²)",
+        "best": "O(n)"
+    }
     def run(self):
 
         for i in range(1, len(self.data)):

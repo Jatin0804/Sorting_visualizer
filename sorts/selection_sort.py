@@ -8,6 +8,11 @@ Selection Sort is a simple in-place sorting algorithm that repeatedly selects th
 from .base_sort import BaseSort
 
 class SelectionSort(BaseSort):
+    complexities = {
+        "worst": "O(n²)",
+        "average": "O(n²)",
+        "best": "O(n²)"
+    }
     def run(self):
         n = len(self.data)
 

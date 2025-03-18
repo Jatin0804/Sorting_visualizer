@@ -7,6 +7,11 @@ Tim Sort is a hybrid sorting algorithm that combines Merge Sort and Insertion So
 from .base_sort import BaseSort
 
 class TimSort(BaseSort):
+    complexities = {
+        "worst": "O(n log n)",
+        "average": "O(n log n)",
+        "best": "O(n)"
+    }
     RUN = 32  # Standard RUN size used in Tim Sort
 
     def run(self):

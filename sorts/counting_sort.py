@@ -7,6 +7,11 @@ Counting Sort is a non-comparative sorting algorithm that counts the occurrence 
 from .base_sort import BaseSort
 
 class CountingSort(BaseSort):
+    complexities = {
+        "worst": "O(n + k)",
+        "average": "O(n + k)",
+        "best": "O(n + k)"
+    }
     def run(self):
         if not self.data:
             return

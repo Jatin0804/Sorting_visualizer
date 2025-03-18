@@ -9,6 +9,12 @@ This process continues until the list is completely sorted.
 from .base_sort import BaseSort
 
 class BubbleSort(BaseSort):
+    complexities = {
+        "worst": "O(n²)",
+        "best": "O(n)",
+        "average": "O(n²)"
+    }
+
     def run(self):
         n = len(self.data)
 

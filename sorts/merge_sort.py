@@ -8,6 +8,11 @@ It recursively divides the array into smaller subarrays, sorts them, and merges 
 from .base_sort import BaseSort
 
 class MergeSort(BaseSort):
+    complexities = {
+        "worst": "O(n log n)",
+        "average": "O(n log n)",
+        "best": "O(n log n)"
+    }
     def run(self):
         self.merge_sort(0, len(self.data) - 1)
         self.visualizer.bar_colors = ["#2980b9"] * len(self.data)  # Final sorted color

@@ -8,6 +8,11 @@ starting from the least significant to the most significant digit, using Countin
 from .base_sort import BaseSort
 
 class RadixSort(BaseSort):
+    complexities = {
+        "worst": "O(n * k)",
+        "average": "O(n * k)",
+        "best": "O(n * k)"
+    }
     def run(self):
         if not self.data:
             return

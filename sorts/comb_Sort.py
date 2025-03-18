@@ -9,6 +9,11 @@ from .base_sort import BaseSort
 
 
 class CombSort(BaseSort):
+    complexities = {
+        "worst": "O(n²)",
+        "average": "O(n log n)",
+        "best": "O(n log n)"
+    }
     def run(self):
         n = len(self.data)
         gap = n  # Initialize gap size

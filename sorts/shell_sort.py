@@ -8,6 +8,11 @@ then progressively reduced until they are sorted at gap = 1.
 from .base_sort import BaseSort
 
 class ShellSort(BaseSort):
+    complexities = {
+        "worst": "O(n²)",
+        "average": "O(n log n)",
+        "best": "O(n log n)"
+    }
     def run(self):
         n = len(self.data)
         gap = n // 2  # Initial gap size
