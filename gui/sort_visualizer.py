@@ -89,7 +89,7 @@ class SortingVisualizer(QWidget):
 
         # Size Slider
         self.size_slider = QSlider(Qt.Orientation.Horizontal, self)
-        self.size_slider.setMinimum(10)  
+        self.size_slider.setMinimum(3)  
         self.size_slider.setMaximum(150)  
         self.size_slider.setValue(50)  
         self.size_slider.valueChanged.connect(self.update_dataset_size)
@@ -140,33 +140,6 @@ class SortingVisualizer(QWidget):
 
         algorithm_class = SORTING_ALGORITHMS.get(algorithm)
 
-        # if algorithm == "Bubble Sort":
-        #     self.sorting_thread = BubbleSort(self.data, self)
-        # elif algorithm == "Counting Sort":
-        #     self.sorting_thread = CountingSort(self.data, self)
-        # elif algorithm == "Selection Sort":
-        #     self.sorting_thread = SelectionSort(self.data, self)
-        # elif algorithm == "Insertion Sort":
-        #     self.sorting_thread = InsertionSort(self.data, self)
-        # elif algorithm == "Radix Sort":
-        #     self.sorting_thread = RadixSort(self.data, self)
-        # elif algorithm == "Quick Sort":
-        #     self.sorting_thread = QuickSort(self.data, self)
-        # elif algorithm == "Shell Sort":
-        #     self.sorting_thread = ShellSort(self.data, self)
-        # elif algorithm == "Merge Sort":
-        #     self.sorting_thread = MergeSort(self.data, self)
-        # elif algorithm == "Heap Sort":
-        #     self.sorting_thread = HeapSort(self.data, self)
-        # elif algorithm == "Tim Sort":
-        #     self.sorting_thread = TimSort(self.data, self)
-        # elif algorithm == "Comb Sort":
-        #     self.sorting_thread = CombSort(self.data, self)
-        # elif algorithm == "Bogo Sort (Fun only)":
-        #     self.sorting_thread = BogoSort(self.data, self)
-        # else:
-        #     return
-
         if algorithm_class:
             self.sorting_thread = algorithm_class(self.data, self)
             self.sorting_thread.update_signal.connect(self.draw_data)
@@ -206,4 +179,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
